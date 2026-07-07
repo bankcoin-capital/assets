@@ -79,8 +79,8 @@ Supply figures, cited from our own public API with its exclusion policy (§9) an
 
 | Coin / chain | totalSupply() | Published circulating | Pinned block |
 |---|---:|---:|---|
-| kUSD / Base | 2,273,895,200.000000 | 842,370,031.053690 | 48,298,278 |
-| kUSD / Arbitrum | 2,521,588,900.000000 | 317,813,678.859102 | 481,178,510 |
+| kUSD / Base | 2,273,895,200.000000 | 20.025656 | 48,300,684 |
+| kUSD / Arbitrum | 2,521,588,900.000000 | 504,317.780000 | 481,197,347 |
 
 **Backing is a property of total supply; circulating supply is a distribution metric, not a solvency metric.** Every unit of every kStable — treasury-held float and third-party holdings alike — carries the same collateral claim, and redemption draws on system-wide collateral (§3). The treasury float is fully backed and available for issuance at any time; it is excluded from the *circulating* figure only because listing venues define that metric as third-party-held supply (the same convention under which major issuers'"'"' authorized-but-unissued treasury balances are excluded — exclusion from a market-capitalization metric implies nothing about backing).
 
