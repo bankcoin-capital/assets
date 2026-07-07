@@ -1,6 +1,6 @@
 {
   "name": "Bankcoin kStable Family",
-  "timestamp": "2026-07-07T02:49:01Z",
+  "timestamp": "2026-07-07T05:43:56Z",
   "version": {
     "major": 3,
     "minor": 0,
@@ -14,7 +14,7 @@
   "tags": {
     "stablecoin": {
       "name": "Stablecoin",
-      "description": "Fiat-referenced stable token"
+      "description": "Fiat referenced stable token"
     },
     "kstable": {
       "name": "kStable",

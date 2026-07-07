@@ -22,7 +22,7 @@ never a stale or fabricated number. Circulating supply = on-chain
 [`supply/exclusions.json`](https://assets.bankcoin.capital/supply/exclusions.json) — any third
 party can reproduce every figure from public RPC reads alone.
 
-`tokenlist.json` sha256: `79f1040a50f41d4082737e07dd39ed93337d10e15dcfcd022b0ec20cc730e504`
+`tokenlist.json` sha256: `f14daa32c8b7f0d515560d75dd846935f0fe60eb827f014cdf96ece3ba6f0cc1`
 
 Every entry is generated from the issuer's contract registry and validated
 against on-chain `symbol()` / `decimals()` before publication. Issuer solvency
