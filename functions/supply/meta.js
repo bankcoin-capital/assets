@@ -30,3 +30,7 @@ export async function onRequestGet(context) {
 export function onRequestOptions() {
   return corsPreflight();
 }
+
+// HEAD must behave like GET minus the body (some listing validators probe
+// with HEAD); the runtime strips the body automatically.
+export { onRequestGet as onRequestHead };
