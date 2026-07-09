@@ -15,6 +15,7 @@ those plus the EigenCarbon vintage coins (`EC2025`–`EC2030`, Ethereum `1`).
 | Exclusion registry | https://assets.bankcoin.capital/supply/exclusions.json |
 | Live pool data (JSON) | https://assets.bankcoin.capital/pools?chainId=8453 (optional &pair=kEUR/kUSD) |
 | Pool registry | https://assets.bankcoin.capital/pools.json |
+| DeFi Llama yields feed | https://assets.bankcoin.capital/defillama/yields |
 
 GitHub raw URLs under this repository serve the identical static files; the
 `/supply/*` endpoints are Cloudflare Pages Functions (source in `functions/`)
@@ -24,7 +25,7 @@ never a stale or fabricated number. Circulating supply = on-chain
 [`supply/exclusions.json`](https://assets.bankcoin.capital/supply/exclusions.json) — any third
 party can reproduce every figure from public RPC reads alone.
 
-`tokenlist.json` sha256: `7c6f92e5b2c283c1eafa3ad2a302d02b97552c3abd5c283bc37ce260599643dd`
+`tokenlist.json` sha256: `ad41df9b90f531448a092d23d345fee5e559a13021ebeb2d3995f3e906667324`
 
 Every entry is generated from the issuer's contract registry and validated
 against on-chain `symbol()` / `decimals()` before publication. Issuer solvency

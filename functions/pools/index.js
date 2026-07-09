@@ -42,7 +42,9 @@ const SEL_LIQUIDITY = "0x1a686502"; // liquidity() -> uint128
 const SEL_BALANCE_OF = "0x70a08231"; // balanceOf(address) -> uint256
 
 const Q96 = 2n ** 96n;
-const CALLS_PER_POOL = 4; // slot0, liquidity, balanceOf(tokenA→pool), balanceOf(tokenB→pool)
+// Exported: /defillama/yields reuses the exact same block-pinned multicall path
+// (readPoolsViaMulticall + buildPool) so the two surfaces can never diverge.
+export const CALLS_PER_POOL = 4; // slot0, liquidity, balanceOf(tokenA→pool), balanceOf(tokenB→pool)
 
 function jsonResponse(obj, status = 200, cacheable = status === 200) {
   return new Response(JSON.stringify(obj, null, 2) + "\n", {
@@ -60,7 +62,7 @@ function jsonResponse(obj, status = 200, cacheable = status === 200) {
 
 // Load the static pool registry from the deployed tree (mirrors _lib.loadConfig,
 // which loads /supply/exclusions.json). Missing registry ⇒ 503, never a guess.
-async function loadPools(context) {
+export async function loadPools(context) {
   const url = new URL("/pools.json", context.request.url);
   const res = await context.env.ASSETS.fetch(new Request(url.toString()));
   if (!res.ok) {
@@ -108,7 +110,7 @@ function decodeAggregateBytes(hex, expectedCount) {
 // One eth_call at one pinned block: slot0 + liquidity + both pool reserves for
 // every pool. Reverting inner calls fail the whole aggregate (⇒ 503) — never a
 // zero-filled pool.
-async function readPoolsViaMulticall(rpcUrl, multicall3, pools) {
+export async function readPoolsViaMulticall(rpcUrl, multicall3, pools) {
   const bnRes = await rpcPost(rpcUrl, {
     jsonrpc: "2.0",
     id: 0,
@@ -142,7 +144,7 @@ async function readPoolsViaMulticall(rpcUrl, multicall3, pools) {
 }
 
 // Assemble one pool's public record from its 4 raw returns (base = 4*index).
-function buildPool(p, raw, base) {
+export function buildPool(p, raw, base) {
   const slot0 = raw[base + 0];
   const liqRaw = raw[base + 1];
   const balARaw = raw[base + 2];
