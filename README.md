@@ -13,6 +13,8 @@ those plus the EigenCarbon vintage coins (`EC2025`–`EC2030`, Ethereum `1`).
 | Total supply (plain number) | https://assets.bankcoin.capital/supply/total?symbol=kUSD&chainId=8453 |
 | Supply metadata (auditable JSON) | https://assets.bankcoin.capital/supply/meta?symbol=kUSD&chainId=8453 |
 | Exclusion registry | https://assets.bankcoin.capital/supply/exclusions.json |
+| Live pool data (JSON) | https://assets.bankcoin.capital/pools?chainId=8453 (optional &pair=kEUR/kUSD) |
+| Pool registry | https://assets.bankcoin.capital/pools.json |
 
 GitHub raw URLs under this repository serve the identical static files; the
 `/supply/*` endpoints are Cloudflare Pages Functions (source in `functions/`)
@@ -22,7 +24,7 @@ never a stale or fabricated number. Circulating supply = on-chain
 [`supply/exclusions.json`](https://assets.bankcoin.capital/supply/exclusions.json) — any third
 party can reproduce every figure from public RPC reads alone.
 
-`tokenlist.json` sha256: `f14daa32c8b7f0d515560d75dd846935f0fe60eb827f014cdf96ece3ba6f0cc1`
+`tokenlist.json` sha256: `7c6f92e5b2c283c1eafa3ad2a302d02b97552c3abd5c283bc37ce260599643dd`
 
 Every entry is generated from the issuer's contract registry and validated
 against on-chain `symbol()` / `decimals()` before publication. Issuer solvency

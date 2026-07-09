@@ -8,6 +8,7 @@
 
 import {
   computeSupply,
+  computeSupplyAggregate,
   corsPreflight,
   errorToResponse,
   textResponse,
@@ -17,7 +18,11 @@ import {
 export async function onRequestGet(context) {
   return withEdgeCache(context, async () => {
     try {
-      const s = await computeSupply(context);
+      // No chainId → cross-chain aggregate; with chainId → that chain only.
+      const hasChain = new URL(context.request.url).searchParams.get("chainId");
+      const s = hasChain
+        ? await computeSupply(context)
+        : await computeSupplyAggregate(context);
       return textResponse(s.totalSupplyFormatted);
     } catch (e) {
       return errorToResponse(e, false);

@@ -124,7 +124,7 @@ export function resolveToken(config, symbolParam, chainIdParam) {
 // JSON-RPC (batch, block-pinned, multi-endpoint failover)
 // ---------------------------------------------------------------------------
 
-async function rpcPost(rpcUrl, payload) {
+export async function rpcPost(rpcUrl, payload) {
   const res = await fetch(rpcUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -152,14 +152,14 @@ function hexToBigInt(hex, what) {
 
 const SEL_AGGREGATE = "0x252dba42"; // aggregate((address,bytes)[]) -> (uint256,bytes[])
 
-function pad32(hex) {
+export function pad32(hex) {
   return hex.replace(/^0x/, "").padStart(64, "0");
 }
 
 // ABI-encode Multicall3.aggregate(Call[] calls) calldata where each call is
 // (address target, bytes callData). Reverts if any inner call reverts — which
 // is what we want: a failed read must fail the response (503), never zero-fill.
-function encodeAggregate(calls) {
+export function encodeAggregate(calls) {
   const words = [];
   words.push(pad32("0x20")); // offset to Call[]
   words.push(pad32("0x" + calls.length.toString(16))); // array length
@@ -364,6 +364,65 @@ export function formatUnits(value, decimals) {
 // ---------------------------------------------------------------------------
 // Core computation shared by all three endpoints
 // ---------------------------------------------------------------------------
+
+// Cross-chain AGGREGATE: when chainId is omitted, sum totalSupply and
+// circulating across EVERY configured chain that carries the symbol. This is
+// what CoinGecko/CMC display for a multi-chain token (kUSD lives on Base +
+// Arbitrum). Same accuracy discipline: any per-chain RPC failure throws (no
+// partial/stale aggregate). Decimals are uniform across the kStable family (6);
+// asserted per chain.
+export async function computeSupplyAggregate(context) {
+  const config = await loadConfig(context);
+  const url = new URL(context.request.url);
+  const symbolParam = url.searchParams.get("symbol");
+  if (!symbolParam) throw new SupplyError(400, "required query param: symbol");
+  const wanted = symbolParam.toLowerCase();
+
+  let totalSupply = 0n;
+  let circulating = 0n;
+  let decimals = null;
+  const perChain = [];
+  for (const chainId of Object.keys(config.chains)) {
+    const chain = config.chains[chainId];
+    const symbol = Object.keys(chain.tokens).find(
+      (s) => s.toLowerCase() === wanted
+    );
+    if (!symbol) continue;
+    const token = chain.tokens[symbol];
+    if (decimals === null) decimals = token.decimals;
+    else if (decimals !== token.decimals) {
+      throw new SupplyError(
+        500,
+        `decimals mismatch across chains for ${symbol}: ${decimals} vs ${token.decimals}`
+      );
+    }
+    const { blockNumber, totalSupply: ts, balances } = await readSupply(chain, token);
+    let excluded = 0n;
+    (chain.exclusions || []).forEach((_e, i) => (excluded += balances[i]));
+    const circ = ts - excluded;
+    if (circ < 0n) {
+      throw new SupplyError(
+        500,
+        `invariant violation on ${symbol}@${chainId}: excluded > totalSupply`
+      );
+    }
+    totalSupply += ts;
+    circulating += circ;
+    perChain.push({ chainId: Number(chainId), asOfBlock: blockNumber });
+  }
+  if (decimals === null) {
+    throw new SupplyError(404, `unknown symbol ${symbolParam} on any chain`);
+  }
+  return {
+    symbol: symbolParam,
+    aggregate: true,
+    chains: perChain,
+    totalSupply: totalSupply.toString(),
+    totalSupplyFormatted: formatUnits(totalSupply, decimals),
+    circulating: circulating.toString(),
+    circulatingFormatted: formatUnits(circulating, decimals),
+  };
+}
 
 export async function computeSupply(context) {
   const url = new URL(context.request.url);
