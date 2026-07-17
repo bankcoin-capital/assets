@@ -1,9 +1,9 @@
 {
   "name": "Bankcoin kStable Family",
-  "timestamp": "2026-07-11T05:59:53Z",
+  "timestamp": "2026-07-17T18:30:36Z",
   "version": {
     "major": 3,
-    "minor": 0,
+    "minor": 1,
     "patch": 0
   },
   "keywords": [
@@ -19,6 +19,10 @@
     "kstable": {
       "name": "kStable",
       "description": "Bankcoin Capital kStable family"
+    },
+    "commodity": {
+      "name": "Commodity",
+      "description": "Commodity referenced token"
     }
   },
   "logoURI": "https://assets.bankcoin.capital/icons/kstables/family.png",
@@ -457,6 +461,66 @@
     },
     {
       "chainId": 8453,
+      "address": "0x6d9301a1092e00d88308c8be3B024a6FEee9bd65",
+      "name": "Bankcoin Silver",
+      "symbol": "kXAG",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXAG.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0x05d681EAcE4A66588fb14E74B4948f69B447e9Ff",
+      "name": "Bankcoin Gold",
+      "symbol": "kXAU",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXAU.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0xeA34eED609C6B0C81712D8304cB423ee4837bD69",
+      "name": "Bankcoin Brent Crude",
+      "symbol": "kXBR",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXBR.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0xc19a810361DcbC19fd5AC718e624fc3E4Be790d4",
+      "name": "Bankcoin Copper",
+      "symbol": "kXCU",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXCU.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0xbEceA2e73659363D9E141a829C2eccb0e9B3FAcc",
+      "name": "Bankcoin Natural Gas",
+      "symbol": "kXNG",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXNG.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
       "address": "0x5916742182196dD698cC3678b723eFf46a81dFFd",
       "name": "Bankcoin West African CFA Franc",
       "symbol": "kXOF",
@@ -464,6 +528,42 @@
       "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXOF.png",
       "tags": [
         "stablecoin",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0xB153dC736dAFEED925AF9cE784fd5aA36C25AB01",
+      "name": "Bankcoin Palladium",
+      "symbol": "kXPD",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXPD.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0xCf15eAED6A532db5F28762cDA2Ae7c6e4919ACc5",
+      "name": "Bankcoin Platinum",
+      "symbol": "kXPT",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXPT.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 8453,
+      "address": "0x519B4C5Ba09df1854d73932092B63cD3542e44A6",
+      "name": "Bankcoin WTI Crude",
+      "symbol": "kXTI",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXTI.png",
+      "tags": [
+        "commodity",
         "kstable"
       ]
     },
@@ -913,6 +1013,66 @@
     },
     {
       "chainId": 42161,
+      "address": "0xc20306b8F067B98539E2b3B8A5d589fB257C9186",
+      "name": "Bankcoin Silver",
+      "symbol": "kXAG",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXAG.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0x9Ed02955Dd7a81aC6608b66dCA3607b3488C3827",
+      "name": "Bankcoin Gold",
+      "symbol": "kXAU",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXAU.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0xc37810984D843c1E721c033d532a684eE009bA8c",
+      "name": "Bankcoin Brent Crude",
+      "symbol": "kXBR",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXBR.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0xfDaf4b18131c81dF612A2be4fc4020FFd1abdC35",
+      "name": "Bankcoin Copper",
+      "symbol": "kXCU",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXCU.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0x8199A01530195E8BF469A8f854A8d1490Cf52A0B",
+      "name": "Bankcoin Natural Gas",
+      "symbol": "kXNG",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXNG.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
       "address": "0xeC337A0BedD24B5616F284b80cCA85648335bCae",
       "name": "Bankcoin West African CFA Franc",
       "symbol": "kXOF",
@@ -920,6 +1080,42 @@
       "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXOF.png",
       "tags": [
         "stablecoin",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0x47842435ef966b6e7aBdC18d04cEcA7d1D3CddDF",
+      "name": "Bankcoin Palladium",
+      "symbol": "kXPD",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXPD.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0xc68E4edA731b779518cD2a05f41cf59ac57CAf66",
+      "name": "Bankcoin Platinum",
+      "symbol": "kXPT",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXPT.png",
+      "tags": [
+        "commodity",
+        "kstable"
+      ]
+    },
+    {
+      "chainId": 42161,
+      "address": "0x427129D543Fd9EBdB190aEB9E62239788373FaDF",
+      "name": "Bankcoin WTI Crude",
+      "symbol": "kXTI",
+      "decimals": 6,
+      "logoURI": "https://assets.bankcoin.capital/icons/kstables/kXTI.png",
+      "tags": [
+        "commodity",
         "kstable"
       ]
     },

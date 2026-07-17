@@ -6,13 +6,15 @@ those plus the EigenCarbon vintage coins (`EC2025`–`EC2030`, Ethereum `1`).
 
 | Artifact | Canonical URL |
 |---|---|
-| Token list (v3.0.0) | https://assets.bankcoin.capital/tokenlist.json |
+| Token list (v3.1.0) | https://assets.bankcoin.capital/tokenlist.json |
 | Per-coin icons (256x256 PNG) | https://assets.bankcoin.capital/icons/kstables/<SYMBOL>.png |
 | Per-address logos | https://assets.bankcoin.capital/logos/<chainId>/<address>/logo.png |
 | Circulating supply (plain number) | https://assets.bankcoin.capital/supply/circulating?symbol=kUSD&chainId=8453 |
 | Total supply (plain number) | https://assets.bankcoin.capital/supply/total?symbol=kUSD&chainId=8453 |
 | Supply metadata (auditable JSON) | https://assets.bankcoin.capital/supply/meta?symbol=kUSD&chainId=8453 |
 | Exclusion registry | https://assets.bankcoin.capital/supply/exclusions.json |
+| External-stable reserves held (JSON, live) | https://assets.bankcoin.capital/reserves?chainId=8453 (optional &symbol=USDT) |
+| Reserve registry (holders + external stables) | https://assets.bankcoin.capital/reserves.json |
 | Live pool data (JSON) | https://assets.bankcoin.capital/pools?chainId=8453 (optional &pair=kEUR/kUSD) |
 | Pool registry | https://assets.bankcoin.capital/pools.json |
 | DeFi Llama yields feed | https://assets.bankcoin.capital/defillama/yields |
@@ -25,7 +27,7 @@ never a stale or fabricated number. Circulating supply = on-chain
 [`supply/exclusions.json`](https://assets.bankcoin.capital/supply/exclusions.json) — any third
 party can reproduce every figure from public RPC reads alone.
 
-`tokenlist.json` sha256: `c1fad089630b814a9fd81a2043c4c2c6789d7cac5eac94f7d2d6caf758f07e62`
+`tokenlist.json` sha256: `66cae91f899e9fafbe37cb3b81882a02fef4e32fc6953f5c76c490599c486754`
 
 Every entry is generated from the issuer's contract registry and validated
 against on-chain `symbol()` / `decimals()` before publication. Issuer solvency
